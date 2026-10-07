@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SMART HIDRO FARM - USAHA MAHASISWA JURUSAN TEKNOLOGI PERTANIAN.">
+    <title>SMART HIDRO FARM - USAHA MAHASISWA JURUSAN TEKNOLOGI PERTANIAN</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <style>
+        /* ==========================================================================
+           1. IDENTITAS VISUAL & DESIGN SYSTEM
+           ========================================================================== */
+        :root {
+            --primary-green: #2F5D3A;
+            --dark-green: #1F3D29;
+            --light-green: #EAF2E5;
+            --earth-brown: #8A6A45;
+            --cream: #F7F5EF;
+            --white: #FFFFFF;
+            --text-dark: #20251F;
+            --muted-text: #687066;
+            --border-color: #E2E8E0;
+            --font-heading: 'DM Serif Display', Georgia, serif;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text-dark);
+            background-color: var(--white);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* Typography Override */
+        h1, h2, h3, h4, .font-heading {
+            font-family: var(--font-heading);
+            font-weight: 400;
+            color: var(--dark-green);
+            line-height: 1.15;
+        }
+
+        h1 { font-size: clamp(2.5rem, 5vw, 4rem); }
+        h2 { font-size: clamp(2rem, 3.5vw, 2.75rem); }
+        h3 { font-size: clamp(1.4rem, 2vw, 1.75rem); }
+
+        .lead-text {
+            font-size: clamp(1rem, 1.2vw, 1.15rem);
+            color: var(--muted-text);
+        }
+
+        /* Buttons */
+        .btn-agri-primary {
+            background-color: var(--primary-green);
+            color: var(--white);
+            padding: 0.75rem 1.75rem;
+            border-radius: 6px;
+            font-weight: 500;
+            border: 1px solid var(--primary-green);
+            transition: var(--transition-smooth);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-agri-primary:hover {
+            background-color: var(--dark-green);
+            color: var(--white);
+            border-color: var(--dark-green);
+            transform: translateY(-2px);
+        }
+
+        .btn-agri-outline {
+            background-color: transparent;
+            color: var(--primary-green);
+            padding: 0.75rem 1.75rem;
+            border-radius: 6px;
+            font-weight: 500;
+            border: 1px solid var(--primary-green);
+            transition: var(--transition-smooth);
+            text-decoration: none;
+        }
+
+        .btn-agri-outline:hover {
+            background-color: var(--light-green);
+            color: var(--dark-green);
+        }
+
+        /* Layout Helpers */
+        .section-padding { padding: 5rem 0; }
+        @media (max-width: 768px) { .section-padding { padding: 3rem 0; } }
+
+        .bg-cream { background-color: var(--cream); }
+        .bg-light-green { background-color: var(--light-green); }
+        .bg-dark-green { background-color: var(--dark-green); color: var(--white); }
+
+        .tag-label {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--earth-brown);
+            margin-bottom: 0.75rem;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border-color);
+            transition: var(--transition-smooth);
+        }
+
+        .navbar-brand {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: var(--dark-green);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-link {
+            color: var(--text-dark);
+            font-weight: 500;
+            padding: 0.5rem 1rem !important;
+            transition: var(--transition-smooth);
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary-green);
+        }
+
+        /* Hero */
+        .hero-section {
+            padding: 6rem 0 4rem;
+            background-color: var(--cream);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .hero-img-wrapper {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+        }
+
+        .hero-img {
+            width: 100%;
+            height: 460px;
+            object-fit: cover;
+        }
+
+        /* Card Simple Clean */
+        .agri-card {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 1.75rem;
+            height: 100%;
+            transition: var(--transition-smooth);
+        }
+
+        .agri-card:hover {
+            border-color: var(--primary-green);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+
+        /* ==========================================================================
+           2. TAB NAVIGASI KHUSUS SOP (NO MENU SOP)
+           ========================================================================== */
+        .sop-nav-pills {
+            display: flex;
+            gap: 0.5rem;
+            overflow-x: auto;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .sop-nav-pills .nav-link {
+            background-color: var(--cream);
+            color: var(--text-dark);
+            border-radius: 8px;
+            padding: 0.8rem 1.25rem !important;
+            font-weight: 600;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .sop-nav-pills .nav-link .badge-num {
+            background-color: var(--primary-green);
+            color: var(--white);
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+        }
+
+        .sop-nav-pills .nav-link.active {
+            background-color: var(--primary-green) !important;
+            color: var(--white) !important;
+            border-color: var(--primary-green);
+        }
+
+        .sop-nav-pills .nav-link.active .badge-num {
+            background-color: var(--white);
+            color: var(--primary-green);
+        }
+
+        /* Table Design */
+        .agri-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .agri-table th {
+            background-color: var(--light-green);
+            color: var(--dark-green);
+            font-weight: 600;
+            padding: 0.75rem 1rem;
+            font-size: 0.875rem;
+        }
+
+        .agri-table td {
+            padding: 0.75rem 1rem;
+            font-size: 0.875rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* Checklist */
+        .check-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .check-list li {
+            position: relative;
+            padding-left: 1.75rem;
+            margin-bottom: 0.6rem;
+            font-size: 0.95rem;
+        }
+
+        .check-list li::before {
+            content: "\F26E";
+            font-family: "bootstrap-icons";
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--primary-green);
+            font-weight: bold;
+        }
+
+        /* Flowchart */
+        .flow-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .flow-node {
+            background-color: var(--white);
+            border: 1px solid var(--primary-green);
+            border-radius: 6px;
+            padding: 0.75rem 1.25rem;
+            width: 100%;
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--dark-green);
+        }
+
+        .flow-node.start-end {
+            background-color: var(--primary-green);
+            color: var(--white);
+            border-radius: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-green);
+            color: rgba(255,255,255,0.8);
+            padding: 4rem 0 2rem;
+        }
+
+        footer h5 {
+            color: var(--white);
+            font-family: var(--font-heading);
+            margin-bottom: 1.25rem;
+        }
+
+        footer a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+
+        footer a:hover { color: var(--white); }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR PERTUSAN LENGKAP -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#beranda"></a>
+                <img src="LOGO.png" alt="LOGO.png" style="height: 38px; width: auto;" class="me-2">
+                SMART-HIDRO FARM
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" href="#beranda">Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#profil">Profil Kami</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#sop">SOP Budidaya</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#layanan">Layanan & Produk</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#artikel">Artikel</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#kontak">Kontak</a></li>
+                </ul>
+                <a href="#kontak" class="btn-agri-primary">Hubungi Kami</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="beranda" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                    <span class="tag-label">PERTANIAN BERKELANJUTAN & MODERN</span>
+                    <h1 class="mb-3">Hidroponik Modern Berbasis Energi Bersih dan Teknologi IoT</h1>
+                    <p class="lead-text mb-4">
+                        Sebuah pengembangan usaha hidroponik mahasiswa yang mengintegrasikan teknologi pertanian modern, energi terbarukan, dan Internet of Things (IoT).
+                    </p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="#sop" class="btn-agri-primary">Lihat SOP Budidaya</a>
+                        <a href="#profil" class="btn-agri-outline">Pelajari Tentang Kami</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="hero-img-wrapper">
+                        <img src="P.jpg" alt="Panel Surya" class="img-fluid rounded mb-2" style="max-height: 300px; width: 100%; object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- SECTION PROFIL -->
+    <section id="profil" class="section-padding bg-cream">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-5">
+                    <img src="hidroponik.jpeg" alt="Profil Pertanian" class="img-fluid rounded-3 shadow-sm">
+                </div>
+                <div class="col-lg-7">
+                    <span class="tag-label">PROFIL KAMI</span>
+                    <h2 class="mb-3">Energi Bersih untuk Hidroponik</h2>
+                    <p class="text-muted">
+                        SMART-HIDRO FARM merupakan unit usaha hidroponik mahasiswa yang berada di lingkungan Fakultas Pertanian, Universitas Jambi. Usaha ini mulai dikembangkan sejak tahun 2024 dengan fokus pada budidaya sayuran hidroponik bernilai ekonomis dan penerapan teknologi pertanian modern.
+                    </p>
+                    <p class="text-muted mb-4">
+                        Sistem hidroponik membutuhkan pompa yang bekerja secara berkelanjutan. Ketergantungan terhadap listrik PLN dapat menjadi salah satu risiko operasional apabila terjadi pemadaman listrik. Penggunaan Pembangkit Listrik Tenaga Surya (PLTS) dikembangkan sebagai sumber energi alternatif atau cadangan untuk menjaga kontinuitas operasional sistem hidroponik.
+                    </p>
+                    <p class="text-muted mb-4">
+                        Pengembangan SMART-HIDRO FARM menggabungkan PLTS dan IoT sebagai bagian dari konsep pertanian presisi. Energi dari panel surya dapat digunakan untuk mendukung operasional sistem, sedangkan sensor IoT digunakan untuk memantau kondisi nutrisi seperti pH dan TDS secara real-time melalui perangkat smartphone.
+                    </p> 
+                        <a href="#sop" class="text-success fw-bold text-decoration-none">Selengkapnya mengenai SOP kami &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION SOP DENGAN MENU TAP NOMOR (SOP 1 - 6) -->
+    <section id="sop" class="section-padding">
+        <div class="container">
+            <div class="text-center max-w-700 mx-auto mb-4">
+                <span class="tag-label">STANDAR OPERASIONAL PROSEDUR (SOP)</span>
+                <h2>SOP Budidaya Hidroponik</h2>
+                <p class="lead-text">Pilih menu nomor SOP di bawah ini untuk melihat rincian panduan operasional harian:</p>
+            </div>
+
+            <!-- MENU TAP NOMOR SOP -->
+            <ul class="nav sop-nav-pills justify-content-start justify-content-md-center mb-4" id="sopTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="sop1-tab" data-bs-toggle="tab" data-bs-target="#sop1" type="button" role="tab"><span class="badge-num">1</span> Jadwal Nutrisi</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="sop2-tab" data-bs-toggle="tab" data-bs-target="#sop2" type="button" role="tab"><span class="badge-num">2</span> Prosedur Nutrisi</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="sop3-tab" data-bs-toggle="tab" data-bs-target="#sop3" type="button" role="tab"><span class="badge-num">3</span> Pembersihan Pipa</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="sop4-tab" data-bs-toggle="tab" data-bs-target="#sop4" type="button" role="tab"><span class="badge-num">4</span> Energi (PLTS)</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="sop5-tab" data-bs-toggle="tab" data-bs-target="#sop5" type="button" role="tab"><span class="badge-num">5</span> Flow Chart</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="sop6-tab" data-bs-toggle="tab" data-bs-target="#sop6" type="button" role="tab"><span class="badge-num">6</span> Log & Indikator</button>
+                </li>
+            </ul>
+
+            <!-- KONTEN PENJELASAN SOP SESUAI NOMOR YANG DIPILIH -->
+            <div class="tab-content bg-white border p-4 p-md-5 rounded-3 shadow-sm" id="sopTabContent">
+                
+                <!-- PENJELASAN NO 1: JADWAL PEMBERIAN NUTRISI -->
+                <div class="tab-pane fade show active" id="sop1" role="tabpanel">
+                    <div class="row g-4 align-items-center">
+                        <div class="col-lg-7">
+                            <h3 class="mb-2">1. Jadwal Pemberian Nutrisi</h3>
+                            <p class="text-muted">Pemberian nutrisi dilakukan setiap hari dengan memantau pH, TDS/EC dan volume larutan pada tandon secara rutin.</p>
+
+                            <div class="table-responsive my-3">
+                                <table class="agri-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Waktu</th>
+                                            <th>Kegiatan</th>
+                                            <th>Parameter Nutrisi</th>
+                                            <th>Keterangan</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>Pagi</strong><br>(07.00–08.00)</td>
+                                            <td>Cek volume air dan tambahkan nutrisi AB Mix</td>
+                                            <td>pH 5,5 – 6,5<br>TDS/EC 1,0 – 1,6 mS/cm</td>
+                                            <td>Pastikan volume larutan sesuai dan nutrisi tercampur merata.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Siang</strong><br>(12.00–13.00)</td>
+                                            <td>Cek dan catat pH serta TDS/EC</td>
+                                            <td>pH 5,5 – 6,5<br>TDS/EC 1,0 – 1,6 mS/cm</td>
+                                            <td>Lakukan penyesuaian jika di luar rentang ideal.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Sore</strong><br>(17.00–18.00)</td>
+                                            <td>Tambah air bersih jika volume berkurang</td>
+                                            <td>pH 5,5 – 6,5<br>TDS/EC 1,0 – 1,6 mS/cm</td>
+                                            <td>Jaga kestabilan konsentrasi nutrisi.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="bg-light-green p-3 rounded-3 small">
+                                <strong class="text-success">Catatan Penting:</strong>
+                                <ul class="mb-0 ps-3 text-muted">
+                                    <li>Gunakan nutrisi AB Mix sesuai dosis rekomendasi.</li>
+                                    <li>Parameter pH dan TDS/EC disesuaikan dengan jenis tanaman.</li>
+                                    <li>Catat hasil pengukuran pada log harian.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-5">
+                            <img src="pemberian nutrisi.jpg" alt="Jadwal Nutrisi" class="img-fluid rounded-3">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PENJELASAN NO 2: PROSEDUR PEMBERIAN NUTRISI -->
+                <div class="tab-pane fade" id="sop2" role="tabpanel">
+                    <h3 class="mb-2">2. Prosedur Pemberian Nutrisi</h3>
+                    <p class="text-muted mb-4">Langkah-langkah baku pencampuran dan pemeriksaan nutrisi sebelum dialirkan ke instalasi:</p>
+                    
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <div class="p-3 border rounded bg-cream h-100">
+                                <div class="fw-bold text-success mb-1">Langkah 1</div>
+                                <h6>Cek Volume Air</h6>
+                                <p class="small text-muted mb-0">Cek volume air pada tandon nutrisi sebelum pencampuran.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="p-3 border rounded bg-cream h-100">
+                                <div class="fw-bold text-success mb-1">Langkah 2</div>
+                                <h6>Tambahkan AB Mix</h6>
+                                <p class="small text-muted mb-0">Tambahkan nutrisi AB Mix sesuai dosis (5 ml/liter masing-masing).</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="p-3 border rounded bg-cream h-100">
+                                <div class="fw-bold text-success mb-1">Langkah 3</div>
+                                <h6>Aduk Hingga Merata</h6>
+                                <p class="small text-muted mb-0">Aduk hingga larutan tercampur merata secara homogen.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="p-3 border rounded bg-cream h-100">
+                                <div class="fw-bold text-success mb-1">Langkah 4</div>
+                                <h6>Ukur & Sesuaikan pH</h6>
+                                <p class="small text-muted mb-0">Ukur dan sesuaikan pH larutan pada kisaran 5,5 – 6,5.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="p-3 border rounded bg-cream h-100">
+                                <div class="fw-bold text-success mb-1">Langkah 5</div>
+                                <h6>Ukur & Sesuaikan TDS/EC</h6>
+                                <p class="small text-muted mb-0">Ukur dan sesuaikan TDS/EC pada kisaran 1,0 – 1,6 mS/cm.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="p-3 border rounded bg-cream h-100">
+                                <div class="fw-bold text-success mb-1">Langkah 6</div>
+                                <h6>Catat Log Harian</h6>
+                                <p class="small text-muted mb-0">Catat hasil pengukuran akhir pada log harian.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PENJELASAN NO 3: PEMBERSIHAN PIPA DAN INSTALASI -->
+                <div class="tab-pane fade" id="sop3" role="tabpanel">
+                    <div class="row g-4">
+                        <div class="col-lg-7">
+                            <h3 class="mb-2">3. Pembersihan Pipa dan Instalasi</h3>
+                            <p class="text-muted">Pembersihan dilakukan secara rutin untuk mencegah penyumbatan, pertumbuhan alga, dan menjaga aliran nutrisi tetap optimal.</p>
+                            
+                            <ol class="ps-3 text-muted mb-4">
+                                <li class="mb-2"><strong>Matikan Pompa:</strong> Matikan pompa dan kosongkan sisa larutan nutrisi pada pipa.</li>
+                                <li class="mb-2"><strong>Sikat Pipa:</strong> Bersihkan bagian dalam pipa menggunakan sikat halus dan air bersih untuk menghilangkan lumut/kotoran.</li>
+                                <li class="mb-2"><strong>Bilas Pipa:</strong> Bilas pipa dengan air bersih hingga kotoran dan lumut terangkat.</li>
+                                <li class="mb-2"><strong>Pasang Kembali:</strong> Pasang kembali pipa dan pastikan tidak ada kebocoran.</li>
+                                <li class="mb-2"><strong>Uji Aliran:</strong> Nyalakan pompa dan pastikan aliran nutrisi berjalan lancar.</li>
+                            </ol>
+                        </div>
+                        <div class="col-lg-5">
+                            <div class="p-4 bg-light-green rounded-3 border border-success">
+                                <h5 class="text-success mb-3"><i class="bi bi-calendar-event"></i> Jadwal Pembersihan:</h5>
+                                <ul class="check-list">
+                                    <li><strong>Pipa dan instalasi:</strong> 1 minggu sekali</li>
+                                    <li><strong>Tandon nutrisi:</strong> 2 minggu sekali</li>
+                                    <li><strong>Filter pompa:</strong> 2 minggu sekali</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PENJELASAN NO 4: MANAJEMEN ENERGI (PLTS) -->
+                <div class="tab-pane fade" id="sop4" role="tabpanel">
+                    <h3 class="mb-2">4. Manajemen Energi (PLTS)</h3>
+                    <p class="text-muted mb-4">Pengelolaan energi dilakukan untuk memastikan operasional pompa dan sistem IoT berjalan stabil dan berkelanjutan.</p>
+
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <div class="p-3 border rounded text-center">
+                                <img src="panel.jpg" alt="Panel Surya" class="img-fluid rounded mb-2" style="max-height: 180px; width: 80%; object-fit: cover;">
+                                <h6>1. Panel Surya</h6>
+                                <p class="small text-muted mb-0">Pastikan panel surya bersih dan tidak terhalang bayangan.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="p-3 border rounded text-center">
+                                <img src="solar controler.jpg" alt="Solar Charge Controller" class="img-fluid rounded mb-2" style="max-height: 180px; width: 80%; object-fit: cover;">
+                                <h6>2. Solar Charge Controller</h6>
+                                <p class="small text-muted mb-0">Cek indikator tegangan & pengisian baterai (misal 13.2 V).</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="p-3 border rounded text-center">
+                                <img src="baterai.jpg" alt="Kondisi Baterai" class="img-fluid rounded mb-2" style="max-height: 180px; width: 80%; object-fit: cover;">
+                                <h6>3. Kondisi Baterai</h6>
+                                <p class="small text-muted mb-0">Pastikan baterai terisi dengan baik (12 – 13,5 V).</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="p-3 border rounded text-center">
+                                <img src="inverter.jpg" alt="Inverter Daya" class="img-fluid rounded mb-2" style="max-height: 240px; width: 60%; object-fit: cover;">
+                                <h6>4. Inverter Daya</h6>
+                                <p class="small text-muted mb-0">Cek inverter dan pastikan bekerja normal.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="p-3 border rounded text-center">
+                                <img src="pompa.jpg" alt="Pompa & Perangkat IoT" class="img-fluid rounded mb-2" style="max-height: 240px; width: 60%; object-fit: cover;">
+                                <h6>5. Pompa & Perangkat IoT</h6>
+                                <p class="small text-muted mb-0">Pastikan beroperasi 24 jam menggunakan energi PLTS.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PENJELASAN NO 5: FLOW CHART KEGIATAN HARIAN -->
+                <div class="tab-pane fade" id="sop5" role="tabpanel">
+                    <h3 class="mb-2 text-center">5. Flow Chart Kegiatan Harian</h3>
+                    <p class="text-muted text-center mb-4">Urutan pemeriksaan harian operasional hidroponik:</p>
+
+                    <div class="flow-container">
+                        <div class="flow-node start-end">Mulai</div>
+                        <i class="bi bi-arrow-down text-success fs-5"></i>
+                        <div class="flow-node">Cek sistem PLTS dan pompa</div>
+                        <i class="bi bi-arrow-down text-success fs-5"></i>
+                        <div class="flow-node">Cek volume air dan pemberian nutrisi</div>
+                        <i class="bi bi-arrow-down text-success fs-5"></i>
+                        <div class="flow-node">Cek pH dan TDS/EC</div>
+                        <i class="bi bi-arrow-down text-success fs-5"></i>
+                        <div class="flow-node">Pastikan aliran nutrisi berjalan lancar</div>
+                        <i class="bi bi-arrow-down text-success fs-5"></i>
+                        <div class="flow-node">Catat hasil pada log harian</div>
+                        <i class="bi bi-arrow-down text-success fs-5"></i>
+                        <div class="flow-node start-end">Selesai</div>
+                    </div>
+                </div>
+
+                <!-- PENJELASAN NO 6: LOG PEMANTAUAN HARIAN & INDIKATOR KEBERHASILAN -->
+                <div class="tab-pane fade" id="sop6" role="tabpanel">
+                    <div class="row g-4">
+                        <div class="col-lg-6">
+                            <h3 class="mb-2">6. Log Pemantauan Harian</h3>
+                            <p class="text-muted small mb-3">Tabel pencatatan rutin parameter lapangan:</p>
+                            <div class="table-responsive">
+                                <table class="agri-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Tanggal</th>
+                                            <th>Vol Air (L)</th>
+                                            <th>Nutrisi (ml/L)</th>
+                                            <th>pH</th>
+                                            <th>TDS/EC</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="5" class="text-center text-muted py-3 small">
+                                                <em>[ Form Tabel Pencatatan Harian ]</em>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <h3 class="mb-2">Indikator Keberhasilan</h3>
+                            <p class="text-muted small mb-3">Tolok ukur keberhasilan operasional sistem:</p>
+                            <ul class="check-list">
+                                <li>pH stabil pada 5,5 – 6,5</li>
+                                <li>TDS/EC stabil pada 1,0 – 1,6 mS/cm</li>
+                                <li>Aliran nutrisi lancar 24 jam</li>
+                                <li>Instalasi bersih dan bebas penyumbatan</li>
+                                <li>Sistem PLTS berfungsi optimal</li>
+                                <li>Tanaman tumbuh sehat dan produktif</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION LAYANAN & PRODUK -->
+    <section id="layanan" class="section-padding bg-cream">
+        <div class="container">
+            <div class="text-center max-w-700 mx-auto mb-5">
+                <span class="tag-label">HASIL & LAYANAN</span>
+                <h2>Produk Pertanian Pilihan</h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="agri-card">
+                        <h5>Sayuran Segar Hidroponik</h5>
+                        <p class="small text-muted">Bebas pestisida, dipanen harian dari instalasi hidroponik bersih.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="agri-card">
+                        <h5>Instalasi Greenhouse</h5>
+                        <p class="small text-muted">Pembangunan sistem hidroponik terintegrasi dengan pemantauan otomatis.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="agri-card">
+                        <h5>Konsultasi Energi PLTS</h5>
+                        <p class="small text-muted">Solusi panel surya mandiri untuk operasional pompa pertanian berkelanjutan.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ARTIKEL SECTION -->
+    <section id="artikel" class="section-padding">
+        <div class="container">
+            <div class="text-center max-w-700 mx-auto mb-5">
+                <span class="tag-label">Wawasan Pertanian</span>
+                <h2>Artikel & Insight</h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="agri-card">
+                        <span class="badge bg-success mb-2">Edukasi</span>
+                        <h6>Pentingnya Menjaga Kestabilan pH pada Hidroponik</h6>
+                        <p class="small text-muted">pH menentukan kemampuan akar menyerap nutrisi secara optimal...</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="agri-card">
+                        <span class="badge bg-success mb-2">Teknologi</span>
+                        <h6>Pemanfaatan Energi Suria pada Greenhouse</h6>
+                        <p class="small text-muted">Mengurangi biaya operasional listrik pompa hingga 100%...</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="agri-card">
+                        <span class="badge bg-success mb-2">Tips Panen</span>
+                        <h6>Menjaga Kualitas Sayuran Pasca Panen</h6>
+                        <p class="small text-muted">Langkah-langkah menjaga kesegaran produk tanaman hidroponik...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION CTA -->
+    <section id="kontak" class="section-padding bg-dark-green text-center">
+        <div class="container">
+            <h2 class="text-white mb-3">Siap Tumbuh Bersama?</h2>
+            <p class="text-white-50 mb-4 max-w-700 mx-auto">Hubungi kami untuk mengetahui lebih lanjut mengenai produk dan solusi pertanian berkelanjutan yang kami tawarkan.</p>
+            <a href="https://wa.me/62895344027742" target="_blank" class="btn btn-light text-success fw-bold px-4 py-3">Hubungi Kami via WhatsApp</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="row g-4 mb-5">
+                <div class="col-lg-4">
+                    <h5><img src="LOGO.png" alt="Logo Smart Hidro Farm" style="height: 38px; width: auto;" class="me-2"> SMART HIDRO FARM</h5>
+                    <p class="small opacity-75">Solusi pertanian berkelanjutan dan presisi modern berbasis teknologi ramah lingkungan.</p>
+                </div>
+                <div class="col-lg-3 offset-lg-1">
+                    <h5>Navigasi</h5>
+                    <ul class="list-unstyled small d-flex flex-column gap-2">
+                        <li><a href="#beranda">Beranda</a></li>
+                        <li><a href="#profil">Profil Kami</a></li>
+                        <li><a href="#sop">SOP Budidaya</a></li>
+                        <li><a href="#layanan">Layanan & Produk</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h5>Kontak</h5>
+                    <p class="small opacity-75 mb-1">Jl. Jambi - Muara Bulian No.KM. 15, Mendalo Darat, Kec. Jambi Luar Kota, Kabupaten Muaro Jambi, Jambi 36657</p>
+                    <p class="small opacity-75 mb-1">Email: info@smarthidrofarm.id</p>
+                    <p class="small opacity-75">Telepon: +62 895-3440-27742</p>
+                </div>
+            </div>
+            <div class="border-top border-secondary pt-3 text-center small opacity-50">
+                &copy; 2026 SMART HIDRO FARM. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
